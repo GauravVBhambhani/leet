@@ -3,7 +3,7 @@ class Solution {
         
         
 
-        if (m > 0 || n > 0) {
+        // if (m > 0 || n > 0) {
 
             int k = m + n - 1;
             int n1_idx = m-1;
@@ -19,6 +19,6 @@ class Solution {
                 }
                 k--;
             }
-        }
+        // }
     }
 }
