@@ -5,7 +5,7 @@ class Solution {
 
         int start = 1;
         int end = x;
-        int mid = 0;
+        int mid;
 
         while (start <= end) {
             mid = start + (end - start) /2;
