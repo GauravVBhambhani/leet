@@ -1,19 +1,18 @@
 class Solution {
-    public int numPairsDivisibleBy60(int[] time) {
-        
-        int[] remainder_count = new int[60];
+    public int numPairsDivisibleBy60(int[] time) {  
+
         int pair = 0;
+        int[] rc = new int[60];
+        
+        for(int i = 0; i < time.length; i++) {
 
-        for (int i = 0; i < time.length; i++) {
-            int remainder = time[i] % 60;
-            int complement = (60 - remainder) % 60;
+            int r = time[i] % 60;
+            int complement = (60 - r) % 60 ;
+            
+            pair += rc[complement];
 
-            pair += remainder_count[complement];
-            remainder_count[remainder] += 1;
+            rc[r]++;
         }
-
         return pair;
-
-
     }
 }
