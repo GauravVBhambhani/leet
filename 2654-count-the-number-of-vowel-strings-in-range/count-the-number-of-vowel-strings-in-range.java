@@ -1,8 +1,10 @@
 class Solution {
 
     public static boolean isVowel(char c) {
-        if ("aeiou".indexOf(c) > -1) return true;
-        return false;
+        // if ("aeiou".indexOf(c) > -1) return true;
+        // return false;
+
+        return ("aeiou".indexOf(c) != -1);
     }
 
     public int vowelStrings(String[] words, int left, int right) {
