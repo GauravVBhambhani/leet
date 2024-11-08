@@ -42,16 +42,23 @@ class Solution {
         List<List<Integer>> res = new ArrayList<>();
         int minDiff = Integer.MAX_VALUE;
 
-        for (int i = 0; i < arr.length - 1; i++) {
-            if (Math.abs(arr[i] - arr[i+1]) < minDiff){
-                minDiff = Math.abs(arr[i] - arr[i+1]);
-            }
-        }
+        // for (int i = 0; i < arr.length - 1; i++) {
+        //     if (Math.abs(arr[i] - arr[i+1]) < minDiff){
+        //         minDiff = Math.abs(arr[i] - arr[i+1]);
+        //     }
+        // }
 
         for (int i = 0; i < arr.length-1; i++) {
-            if (Math.abs(arr[i] - arr[i+1]) == minDiff) {
+            int currDiff = arr[i+1] - arr[i];
+
+            if (currDiff == minDiff) {
                 res.add(Arrays.asList(arr[i], arr[i+1]));
+            } else if (currDiff < minDiff) {
+                res.clear();
+                res.add(Arrays.asList(arr[i], arr[i+1]));
+                minDiff = currDiff;
             }
+
         }
 
         return res;
