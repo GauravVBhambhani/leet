@@ -6,18 +6,16 @@ class Solution {
             a.add(nums1[i]);
         }
         
-
         Set<Integer> b = new HashSet<>();
         for (int i = 0; i < nums2.length; i++) {
             b.add(nums2[i]);
         }
 
-        Set<Integer> intersection = new HashSet<>(a);
-        intersection.retainAll(b);
+        // Set<Integer> intersection = new HashSet<>(a);
+        a.retainAll(b);
 
         // int[] res = new int[intersection.size()];
-        return intersection.stream().mapToInt(Integer::intValue).toArray();
-
+        return a.stream().mapToInt(Integer::intValue).toArray();
 
         // return res;
     }
