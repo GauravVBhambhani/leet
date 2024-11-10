@@ -1,37 +1,17 @@
 class Solution {
-    public int singleNonDuplicate(int[] n) {
+    public int singleNonDuplicate(int[] nums) {
+        
+        HashMap<Integer, Integer> hm = new HashMap<>();
 
-        int l = 0;
-        int r = n.length - 1;
-
-        if (n.length == 1) return n[0];
-
-        while (l <= r) {
-            int m = l + ((r-l)/2);
-
-
-            if (m == 0 && n[m] != n[m+1]) return n[m];
-            if (m == n.length -1 && n[n.length -1] != n[n.length -2]) return n[m];
-            if (n[m-1] != n[m] && n[m] != n[m+1]) return n[m];
-
-            if (m%2 == 0) {
-                
-                if (n[m] == n[m-1]) {// element in left
-                  r = m - 1;
-                }
-                else { // element in right
-                    l = m + 1;
-                }
-            } else {
-                if (n[m] == n[m-1]) { // element in right
-                    l = m + 1;
-                } else { 
-                    r = m - 1;
-                }
-            }
+        for (int i: nums) {
+            hm.put(i, hm.getOrDefault(i, 0)+1);
         }
-        return -1;
-       
+        for (int i: hm.keySet()) {
+            if (hm.get(i) == 1) {
+                return i;
+            } 
+        }
 
+        return -1;
     }
 }
