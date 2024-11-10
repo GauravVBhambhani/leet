@@ -1,22 +1,43 @@
 class Solution {
     public boolean isPalindrome(String s) {
-        String lowerCaseString = s.toLowerCase();
-        String finalStr = lowerCaseString.replaceAll("[^a-z0-9]", "");
-        // System.out.println(finalStr);
-        char[] arr = new char[finalStr.length()];
 
-        for (int i = 0; i < finalStr.length(); i++) {
-            arr[i] = finalStr.charAt(i);
+        s = s.toLowerCase();
+        // System.out.println(s);
+        
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < s.length(); i++) {
+            if ((s.charAt(i) >= 'a' && s.charAt(i) <= 'z') || (s.charAt(i) >= '0' && s.charAt(i) <= '9') ) {
+                sb.append(s.charAt(i));
+            }
+        }
+
+        // System.out.println(sb.toString());
+
+        char[] c = new char[sb.length()];
+        for (int i = 0; i < sb.length(); i++) {
+            c[i] = sb.charAt(i);
+        }
+
+        // reverse
+        for (int i = 0; i < c.length / 2; i++) {
+            char firstChar = c[i];
+            char lastChar = c[c.length - 1 - i];
+
+            c[i] = lastChar;
+            c[c.length - i - 1] = firstChar;
         }
         
-        int p = 0;
-        int q = arr.length -1;
-        while (p <= q) {
-            if (arr[p] != arr[q]) return false;
-            p++;
-            q--;
+        StringBuilder news = new StringBuilder();
+        for (char ch: c) {
+            news.append(ch);
         }
 
-        return true;
+        System.out.println(sb.toString());
+        System.out.println(news.toString());
+
+        if (sb.toString().equals(news.toString())) return true;
+        return false;
+
     }
 }
