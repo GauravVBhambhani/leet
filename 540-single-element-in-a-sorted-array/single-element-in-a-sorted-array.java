@@ -1,17 +1,29 @@
 class Solution {
     public int singleNonDuplicate(int[] nums) {
         
-        HashMap<Integer, Integer> hm = new HashMap<>();
+        int l = 0; 
+        int r = nums.length - 1;
 
-        for (int i: nums) {
-            hm.put(i, hm.getOrDefault(i, 0)+1);
-        }
-        for (int i: hm.keySet()) {
-            if (hm.get(i) == 1) {
-                return i;
-            } 
-        }
+        while(l <= r) {
+            int m = l + ((r - l) /2);
 
+            if (m == 0 || m == nums.length - 1) return nums[m];
+            if ((nums[m-1] != nums[m]) && (nums[m] != nums[m+1])) return nums[m];
+
+            if (m%2 == 0) {
+                if (nums[m] == nums[m-1]) {
+                    r = m-1;
+                } else {
+                    l = m+1;
+                }
+            } else {
+                if (nums[m] == nums[m-1]) {
+                    l = m+1;
+                } else {
+                    r = m-1;
+                }
+            }
+        }
         return -1;
     }
 }
