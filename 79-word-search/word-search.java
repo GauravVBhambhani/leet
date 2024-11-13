@@ -26,7 +26,7 @@ class Solution {
         return false;
     }
 
-    public static boolean searchNext(char[][] board, String word, int row, int col, int currentIndex) {
+    private boolean searchNext(char[][] board, String word, int row, int col, int currentIndex) {
 
         int numberOfRows = board.length; 
         int numberOfColumns = board[0].length;
