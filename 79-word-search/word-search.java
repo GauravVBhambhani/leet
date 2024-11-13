@@ -7,12 +7,12 @@ class Solution {
         int currentIndex = 0;
 
         // First let's check if the first character exists:
-        for (int i = 0; i < numberOfRows; i++) {
-            for (int j = 0; j < numberOfColumns; j++) {
-                if (board[i][j] == word.charAt(currentIndex)) {
+        for (int currentRow = 0; currentRow < numberOfRows; currentRow++) {
+            for (int currentCol = 0; currentCol < numberOfColumns; currentCol++) {
+                if (board[currentRow][currentCol] == word.charAt(currentIndex)) {
 
                     // if first letter exists, call recursive function to check all 4 sides using backtracking to find if word exists
-                    if (searchNext(board, word, i, j, currentIndex)) {
+                    if (searchNext(board, word, currentRow, currentCol, currentIndex)) {
                         // we will need:
                         // 1. board
                         // 2. word
