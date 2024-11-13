@@ -12,7 +12,7 @@ class Solution {
                 if (board[i][j] == word.charAt(currentIndex)) {
 
                     // if first letter exists, call recursive function to check all 4 sides using backtracking to find if word exists
-                    if (searchNext(board, word, i, j, currentIndex, numberOfRows, numberOfColumns)) {
+                    if (searchNext(board, word, i, j, currentIndex)) {
                         // we will need:
                         // 1. board
                         // 2. word
@@ -26,7 +26,10 @@ class Solution {
         return false;
     }
 
-    public static boolean searchNext(char[][] board, String word, int row, int col, int currentIndex, int numberOfRows, int numberOfColumns) {
+    public static boolean searchNext(char[][] board, String word, int row, int col, int currentIndex) {
+
+        int numberOfRows = board.length; 
+        int numberOfColumns = board[0].length;
         // base case: if the current index is euak to the length of the word, we have found the word
         if (currentIndex == word.length()) return true;
 
@@ -45,10 +48,10 @@ class Solution {
         char c = board[row][col];
         board[row][col] = '!'; // marked as visited
 
-        boolean topDirection = searchNext(board, word, row-1, col, currentIndex+1, numberOfRows, numberOfColumns);
-        boolean rightDirection = searchNext(board, word, row, col+1, currentIndex+1, numberOfRows, numberOfColumns);
-        boolean leftDirection = searchNext(board, word, row, col-1, currentIndex+1, numberOfRows, numberOfColumns);
-        boolean bottomDirection = searchNext(board, word, row+1, col, currentIndex+1, numberOfRows, numberOfColumns);
+        boolean topDirection = searchNext(board, word, row-1, col, currentIndex+1);
+        boolean rightDirection = searchNext(board, word, row, col+1, currentIndex+1);
+        boolean leftDirection = searchNext(board, word, row, col-1, currentIndex+1);
+        boolean bottomDirection = searchNext(board, word, row+1, col, currentIndex+1);
 
         board[row][col] = c; // undo the change // idk why?
 
