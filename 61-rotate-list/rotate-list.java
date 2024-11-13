@@ -24,12 +24,8 @@ class Solution {
             curr = curr.next;
         }
         curr.next = head;
-        // k = length%k;
+
         k = length - k % length;
-        System.out.println(length);
-        System.out.println(k);
-        // int new_tail = (length - k % length - 1)
-        // int new_head = length - k;
 
         while (k > 0) {
             curr = curr.next;
@@ -40,7 +36,5 @@ class Solution {
         curr.next = null;
         
         return head;
-
-
     }
 }
