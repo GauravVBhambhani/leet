@@ -1,22 +1,34 @@
 class Solution {
     func maxVowels(_ s: String, _ k: Int) -> Int {
         let vowels: Set<Character> = ["a", "e", "i", "o", "u"]
-        var count: Int = 0
-        var arr = Array(s)
+        let chars = Array(s)
+        var maxCount = 0
+        var currentCount = 0
 
+        // check first window
         for i in 0..<k {
-            count += vowels.contains(arr[i]) ? 1 : 0
+            if vowels.contains(chars[i]) {
+                currentCount += 1
+            }
         }
 
-        var answer = count
+        maxCount = currentCount
+        
+        // move the window
+        for i in k..<chars.count {
+            if vowels.contains(chars[i]) {
+                currentCount += 1
+            }
 
-        for i in k..<arr.count {
-            count += vowels.contains(arr[i]) ? 1 : 0
-            count -= vowels.contains(arr[i - k]) ? 1 : 0
-            answer = max(answer, count)
+            if vowels.contains(chars[i - k]) {
+                currentCount -= 1
+            }
+
+            maxCount = max(maxCount, currentCount)
         }
 
-        return answer
+
+        return maxCount
 
     }
 }
