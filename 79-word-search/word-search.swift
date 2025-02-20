@@ -82,8 +82,8 @@ class Solution {
 
         board[rowIndexOfLetter][colIndexOfLetter] = temp
 
-        // return up || down || left || right
-        if up || down || left || right { return true }
-        return false
+        return up || down || left || right
+        // if up || down || left || right { return true }
+        // return false
     }
 }
