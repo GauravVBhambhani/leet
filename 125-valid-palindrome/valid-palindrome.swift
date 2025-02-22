@@ -1,18 +1,26 @@
 class Solution {
     func isPalindrome(_ s: String) -> Bool {
-        var st = s
-        st = st.lowercased()
-        // st.replacingOccurrences(of: " ", with: "")
-        // st = st.filter { !$0.isWhitespace }
-        // st = st.replacingOccurrences(of: ",", with: "")
-        // st = st.replacingOccurrences(of: ":", with: "")
-        // st = st.replacingOccurrences(of: ".", with: "")
-        // st = st.replacingOccurrences(of: "@", with: "")
+        // var st = s
+        // st = st.lowercased()
+        // st = st.filter({$0.isLetter || $0.isNumber})  
+        // let t = String(st.reversed())
+        // return st == t
 
-        st = st.filter({$0.isLetter || $0.isNumber})  
+        var st = s.lowercased().filter { $0.isLetter || $0.isNumber }
 
-        let t = String(st.reversed())
+        if st.isEmpty { return true }
 
-        return st == t
+        var l = st.startIndex
+        var r = st.index(before: st.endIndex)
+
+        while l < r {
+            if st[l] != st[r] {
+                return false
+            }
+            l = st.index(after: l)
+            r = st.index(before: r)
+        }
+
+        return true
     }
 }
