@@ -4,7 +4,7 @@ class Solution {
 
         var digits = digits
         // for digit in digits.indices.reversed() {}
-        for digit in (0..<digits.count).reversed() {
+        for digit in digits.indices.reversed() {
             guard digits[digit] == 9 else {
                 digits[digit] += 1
                 return digits
