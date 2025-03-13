@@ -7,8 +7,10 @@ class Solution {
         var num = num
 
         while num != 0 {
-            if num % 2 == 0 {
-                num /= 2
+            // if num % 2 == 0 {
+            if (num & 1) == 0 {
+                // num /= 2
+                num >>= 1
             } else {
                 num -= 1
             }
