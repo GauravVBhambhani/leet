@@ -10,12 +10,24 @@
  */
 class Solution {
     func middleNode(_ head: ListNode?) -> ListNode? {
-        var fast = head
-        var slow = head
-        while fast != nil && fast?.next != nil {
-            fast = fast?.next?.next
-            slow = slow?.next
+        // var fast = head
+        // var slow = head
+        // while fast != nil && fast?.next != nil {
+        //     fast = fast?.next?.next
+        //     slow = slow?.next
+        // }
+        // return slow
+
+        var length: Int = 0
+        var items: [ListNode?] = []
+        var p = head
+        while (p != nil) {
+            items.append(p)
+            length += 1
+            p = p?.next
         }
-        return slow
+
+        return items[length / 2]
+
     }
 }
