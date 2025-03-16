@@ -18,25 +18,39 @@ class Solution {
 
         // return true
 
-        var dict = [Character: Int]()
+
+// Solution 2: little faster
+        // var dict = [Character: Int]()
+
+        // for character in ransomNote {
+        //     dict[character, default: 0] += 1
+        // }
+
+        // for character in magazine {
+        //     if let count = dict[character] {
+        //         dict[character] = count - 1
+        //         if dict[character] == 0 {
+        //             dict.removeValue(forKey: character)
+        //         }
+        //     }
+        //     if dict.isEmpty {
+        //         return true
+        //     }
+        // }
+
+        // return dict.isEmpty
+
+// Solution 3: fastest / most optimized
+
+        var copyMagazine = magazine
 
         for character in ransomNote {
-            dict[character, default: 0] += 1
-        }
-
-        for character in magazine {
-            if let count = dict[character] {
-                dict[character] = count - 1
-                if dict[character] == 0 {
-                    dict.removeValue(forKey: character)
-                }
-            }
-            if dict.isEmpty {
-                return true
+            if let index = copyMagazine.firstIndex(of: character) {
+                copyMagazine.remove(at: index)
+            } else {
+                return false
             }
         }
-
-        return dict.isEmpty
-
+        return true
     }
 }
