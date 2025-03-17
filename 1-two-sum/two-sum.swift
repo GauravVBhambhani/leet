@@ -13,7 +13,7 @@ class Solution {
 
         for i in 0..<nums.count {
             let complement = target - nums[i]
-            if let exist = hm[complement], exist != i {
+            if let exist = hm[complement]{
                 return [i, exist]
             }
             hm[nums[i]] = i
