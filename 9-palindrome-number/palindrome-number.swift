@@ -1,18 +1,13 @@
 class Solution {
     func isPalindrome(_ x: Int) -> Bool {
-        var t = x
-        var temp = 0
-
-        while (t > 0) {
-            temp *= 10
-            temp += t % 10
-            t /= 10
+        
+        var n = x
+        var rev = 0
+        while n > 0 {
+            rev *= 10
+            rev += n%10
+            n /= 10
         }
-
-        if temp == x {
-            return true
-        } else {
-            return false
-        }
+        return rev == x
     }
 }
