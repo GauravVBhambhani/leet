@@ -9,7 +9,8 @@ class Solution {
 
         print(hm)
 
-        for (num, count) in hm {
+        // for (num, count) in hm {
+        for count in hm.values {
             if count % 2 != 0 {
                 return false
             }
