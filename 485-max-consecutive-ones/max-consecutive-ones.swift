@@ -6,10 +6,11 @@ class Solution {
             print("num = \(num)")
             if num == 1 {
                 count += 1
+                maxCount = max(maxCount, count)
             } else {
                 count = 0
             }
-            maxCount = max(maxCount, count)
+            
         }
         return maxCount
     }
