@@ -1,13 +1,16 @@
 class Solution {
     func moveZeroes(_ nums: inout [Int]) {
-        var resultArr: [Int] = Array(repeating: 0, count: nums.count)
-        var j = 0
-        for i in 0..<nums.count {
-            if (nums[i] != 0) {
-                resultArr[j] = nums[i]
-                j += 1
+        var write = 0
+        for read in 0..<nums.count {
+            if nums[read] != 0 {
+                nums[write] = nums[read]
+                write += 1
             }
         }
-        nums = resultArr
+
+        while write < nums.count {
+            nums[write] = 0
+            write += 1
+        }
     }
 }
